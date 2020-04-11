@@ -1,4 +1,4 @@
 class UserMeetup < ApplicationRecord
-    belongs_to :user 
-    belongs_to :meetup
+    belongs_to :user, dependent: :destroy 
+    belongs_to :meetup, dependent: :destroy 
 end

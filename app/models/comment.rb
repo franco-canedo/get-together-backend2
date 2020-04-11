@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
-    belongs_to :meetup
-    belongs_to :user
+    belongs_to :meetup, dependent: :destroy 
+    belongs_to :user, dependent: :destroy 
 end

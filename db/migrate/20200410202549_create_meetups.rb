@@ -6,8 +6,6 @@ class CreateMeetups < ActiveRecord::Migration[6.0]
       t.string :time
       t.string :location
       t.integer :topic_id
-      t.string :attendees
-      t.string :commments
 
       t.timestamps
     end

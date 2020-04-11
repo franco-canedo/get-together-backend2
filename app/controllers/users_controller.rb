@@ -7,6 +7,9 @@ class UsersController < ApplicationController
 
     def show
         user = User.find(params[:id])
+        topics = Topic.all
+        meetups = Meetup.all 
+        comments = Comment.all
         render json: user
     end
     
@@ -23,5 +26,11 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         user.destroy 
         render json: user
+    end
+
+    private 
+
+    def user_params
+        params.require(:user).permit(:topic_ids, :meetup_ids, :comment_ids, :first_name, :email, :password)
     end
 end

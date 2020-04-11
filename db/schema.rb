@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 2020_04_10_202624) do
     t.string "time"
     t.string "location"
     t.integer "topic_id"
-    t.string "attendees"
-    t.string "commments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
