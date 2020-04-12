@@ -6,12 +6,29 @@ class MeetupsController < ApplicationController
 
     def show 
         meetup = Meetup.find(params[:id])
-        render json: meetup
+        render json: meetup.to_json(:include => [:users, :comments])
     end
 
     def create 
         meetup = Meetup.create!(meetup_params)
         render json: meetup
+    end
+
+    def edit 
+        meetup = Meetup.find(params[:id])
+    end
+    
+    def update
+        meetup = Meetup.find(params[:id])
+        user = User.find(meetup_params[:user_ids])
+        topic = Topic.find(meetup_params[:topic_id])
+        comment = Comment.find(meetup_params[:comment_ids])
+
+        if meetup.valid?
+            meetup.users << user unless meetup.users.include? user 
+            meetup.comments << comment unless meetup.comments.incliude? comment
+            meetup.topic = topic 
+        end
     end
 
     def destroy 
@@ -23,6 +40,6 @@ class MeetupsController < ApplicationController
     private
 
     def meetup_params 
-        params.require(:meetup).permit(:topic_id,  :comment_ids, :title, :date, :time, :location, :attendees)
+        params.require(:meetup).permit(:topic_id,  :comment_ids, :user_ids, :title, :date, :time, :location)
     end
 end

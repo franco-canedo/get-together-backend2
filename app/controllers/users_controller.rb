@@ -2,24 +2,34 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: users
+        render json: users.to_json(:include => [:topics, :meetups, :comments])
     end
 
     def show
         user = User.find(params[:id])
-        topics = Topic.all
-        meetups = Meetup.all 
-        comments = Comment.all
-        render json: user
+        render json: user.to_json(:include => [:topics, :meetups, :comments])
     end
     
     def create
-        user = User.create!(
-            first_name: params[:user][:first_name],
-            email: params[:user][:email],
-            password: params[:user][:password]
-        )
+        user = User.create!(user_params)
         render json: user
+    end
+
+    def edit
+        user = User.find(params[:id])
+    end
+    
+    def update
+        user = User.find(params[:id])
+        topic = Topic.find(user_params[:topic_ids])
+        meetup = User.find(user_params[:meetup_ids])
+        comment = Comment.find(user_params[:comment_ids])
+
+        if user.valid?
+            user.topics << topic unless user.topics.include? topic 
+            user.meetups << meetup unless user.meetups.include? meetup 
+            user.comments << comment unless user.comments.include? comment 
+        end
     end
 
     def destroy

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
     def index
-        comments = Comment.all 
+        comments = Comment.all
         render json: comments
     end
 
@@ -19,15 +19,30 @@ class CommentsController < ApplicationController
         render json: comment
     end
 
+    def edit 
+        comment = Comment.find(params[:id])
+    end
+    
+    def update
+        comment = Comment.find(params[:id])
+        user = User.find(comment_params[:user_id])
+        meetup = Meetup.find(comment_params[:meetup_id])
+
+        if comment.valid?
+            comment.user = user 
+            comment.meetup = meetup
+        end
+    end
+
     def destroy 
         comment = Comment.find(params[:id])
         comment.destroy 
         render json: comment
     end
 
-    # private
+    private
 
-    # def comment_params
-    #     params.require(:comment).permit(:user_id, :meetup_id, :content)
-    # end
+    def comment_params
+        params.require(:comment).permit(:user_id, :meetup_id, :content)
+    end
 end
