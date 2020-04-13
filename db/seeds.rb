@@ -95,14 +95,14 @@ comment11 = Comment.create(content: "Great group for learning the basics of Sina
 comment12 = Comment.create(content: "We made a Rails app in just 2 hours!", user_id: ana.id, meetup_id: meetup2.id)
 
 # USER_TOPICS
-usertopic1 = UserTopic.create(user_id: joe.id, topic_id: redux.id)
+usertopic1 = UserTopic.create(user_id: joe.id, topic_id: redux)
 usertopic2 = UserTopic.create(user_id: amy.id, topic_id: react.id)
 usertopic3 = UserTopic.create(user_id: bob.id, topic_id: javascript.id)
 usertopic4 = UserTopic.create(user_id: joy.id, topic_id: sinatra.id)
 usertopic5 = UserTopic.create(user_id: jim.id, topic_id: rails.id)
 usertopic6 = UserTopic.create(user_id: liz.id, topic_id: ruby.id)
 
-usertopic7 = UserTopic.create(user_id: ana.id, topic_id: rails.id)
+usertopic7 = UserTopic.create(user_id: ana.id, topic_id: rails.id,)
 usertopic8 = UserTopic.create(user_id: dan.id, topic_id: redux.id)
 usertopic9 = UserTopic.create(user_id: cat.id, topic_id: react.id)
 usertopic10 = UserTopic.create(user_id: sam.id, topic_id: javascript.id)

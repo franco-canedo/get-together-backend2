@@ -1,7 +1,7 @@
 class MeetupsController < ApplicationController
     def index 
         meetups = Meetup.all 
-        render json: meetups.to_json(:include => [:users, :comments])
+        render json: meetups.to_json(:include => [:users, :comments, :topic])
     end
 
     def show 
