@@ -1,12 +1,12 @@
 class MeetupsController < ApplicationController
     def index 
         meetups = Meetup.all 
-        render json: meetups.to_json(:include => [:users, :comments])
+        render json: meetups.to_json(:include => [:users, :comments, :topic])
     end
 
     def show 
         meetup = Meetup.find(params[:id])
-        render json: meetup.to_json(:include => [:users, :comments])
+        render json: meetup.to_json(:include => [:users, :comments, :topics])
     end
 
     def create 
@@ -40,6 +40,6 @@ class MeetupsController < ApplicationController
     private
 
     def meetup_params 
-        params.require(:meetup).permit(:topic_id,  :comment_ids, :user_ids, :title, :date, :time, :location)
+        params.require(:meetup).permit(:topic_id,  :comment_ids, :user_ids, :title, :date, :time, :location, :image)
     end
 end

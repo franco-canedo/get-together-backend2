@@ -36,19 +36,31 @@ bootstrap = Topic.create(topic_name: "Bootstrap", description: "Bootstrap is a f
 sql = Topic.create(topic_name: "SQL", description: "SQL is useful for database management")
 
 # MEETUPS
-railsrun = Meetup.create(title: "Rails Run", date: "Dec 12", time: "7am", location: "Zilker Park", topic_id: rails.id)
-rubycamp = Meetup.create(title: "Ruby Camp", date: "May 5", time: "1pm", location: "We Work", topic_id: ruby.id)
-sinatrasingalong = Meetup.create(title: "Sinatra Sing-Along", date: "Jan 9", time: "8pm", location: "Ego's", topic_id: sinatra.id)
-javascriptjam = Meetup.create(title: "Javascript Jam", date: "Oct 27", time: "9pm", location: "Stubb's", topic_id: javascript.id)
-reactandchill = Meetup.create(title: "React and Chill", date: "Apr 4", time: "4pm", location: "Austin Public Library", topic_id: react.id)
-reduxmeetup = Meetup.create(title: "Redux Meetup", date: "Aug 15", time: "10am", location: "Capitol Factory", topic_id: redux.id)
+railsrun = Meetup.create(title: "Rails Run", date: "Dec 12", time: "7am", location: "Zilker Park", topic_id: rails.id,
+image: "https://cdn6.dissolve.com/p/D145_211_434/D145_211_434_1200.jpg")
+rubycamp = Meetup.create(title: "Ruby Camp", date: "May 5", time: "1pm", location: "We Work", topic_id: ruby.id,
+image: "https://www.nps.gov/grte/planyourvisit/images/JLCG_tents_Teewinot_2008_mattson_1.JPG?maxwidth=1200&maxheight=1200&autorotate=false")
+sinatrasingalong = Meetup.create(title: "Sinatra Sing-Along", date: "Jan 9", time: "8pm", location: "Ego's", topic_id: sinatra.id,
+image: "https://2cadxu4apic638boqt1kzcoz-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/anytime-karaoke-nyc.jpg")
+javascriptjam = Meetup.create(title: "Javascript Jam", date: "Oct 27", time: "9pm", location: "Stubb's", topic_id: javascript.id,
+image: "https://i.pinimg.com/originals/fa/00/d9/fa00d9015b4d9487f1c5b128aa057383.jpg")
+reactandchill = Meetup.create(title: "React and Chill", date: "Apr 4", time: "4pm", location: "Austin Public Library", topic_id: react.id,
+image: "https://st.hzcdn.com/simgs/edb17cc60114372f_4-1895/home-design.jpg")
+reduxmeetup = Meetup.create(title: "Redux Meetup", date: "Aug 15", time: "10am", location: "Capitol Factory", topic_id: redux.id,
+image: "https://i.pinimg.com/originals/75/1e/4c/751e4c6c166e74b990bf4de7fcb8c82d.jpg")
 
-pythonhike = Meetup.create(title: "Python Hike", date: "Feb 8", time: "9am", location: "Greenbelt", topic_id: python.id)
-htmlchat = Meetup.create(title: "HTML Chat", date: "Jun 11", time: "3pm", location: "We Work", topic_id: html.id)
-csslounge = Meetup.create(title: "CSS Lounge", date: "Mar 1", time: "4pm", location: "Whole Foods", topic_id: css.id)
-algoyoga = Meetup.create(title: "Algo Yoga", date: "Jul 19", time: "10pm", location: "Black Swan", topic_id: algo.id)
-bootstrapbingo = Meetup.create(title: "Bootstrap Bingo", date: "Nov 14", time: "7pm", location: "Alamo Drafthouse", topic_id: bootstrap.id)
-sqlcycling = Meetup.create(title: "SQL Cycling", date: "Sep 29", time: "6am", location: "South Congress", topic_id: sql.id)
+pythonhike = Meetup.create(title: "Python Hike", date: "Feb 8", time: "9am", location: "Greenbelt", topic_id: python.id,
+image: "https://2.bp.blogspot.com/-yoQUwwGTZqA/UbD0zCByNsI/AAAAAAAABAo/IgFXOSu5H8w/s1600/Bull+Creek+003.JPG")
+htmlchat = Meetup.create(title: "HTML Chat", date: "Jun 11", time: "3pm", location: "We Work", topic_id: html.id,
+image: "https://www.ihis.info/wp-content/uploads/2018/07/office-relaxation-unique-on-and-chill-out-trivago-photo-glassdoor-co-uk-2.jpg")
+csslounge = Meetup.create(title: "CSS Lounge", date: "Mar 1", time: "4pm", location: "Whole Foods", topic_id: css.id,
+image: "https://cdn.vox-cdn.com/thumbor/JjJfl3jqsP_l-1OaRdWSsQWLwsI=/0x0:2048x1152/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/53411511/whole_foods_nyc_restaurant.0.jpg")
+algoyoga = Meetup.create(title: "Algo Yoga", date: "Jul 19", time: "10pm", location: "Black Swan", topic_id: algo.id,
+image: "https://s13473.pcdn.co/merchant/wp-content/uploads/2018/09/opening-a-yoga-studio_blog.jpg")
+bootstrapbingo = Meetup.create(title: "Bootstrap Bingo", date: "Nov 14", time: "7pm", location: "Alamo Drafthouse", topic_id: bootstrap.id,
+image: "https://www.reviewjournal.com/wp-content/uploads/2016/11/web1_santafebingo-nov23-16_111816_004_7419147.jpg")
+sqlcycling = Meetup.create(title: "SQL Cycling", date: "Sep 29", time: "6am", location: "South Congress", topic_id: sql.id,
+image: "https://media-cdn.wehco.com/img/photos/2016/08/07/bikerace13249344951.jpg")
 
 # USER_MEETUPS
 meetup1 = UserMeetup.create(user_id: jim.id, meetup_id: railsrun.id)
