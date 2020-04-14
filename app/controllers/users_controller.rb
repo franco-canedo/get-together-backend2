@@ -1,14 +1,24 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:new, :create]
+    skip_before_action :authorized, only: [:new, :create, :login]
+    
     def index
         users = User.all
         render json: users.to_json(
             :include => [:topics, {:meetups => {:include => :topic}}, :comments])
     end
 
+    def login
+        user = User.find_by(first_name: params[:first_name])
+        if user
+            render json: user
+        else 
+            render json: {message: "error"}
+        end 
+    end
+
     def show
         user = User.find(params[:id])
-        render json: users.to_json(
+        render json: user.to_json(
             :include => [:topics, {:meetups => {:include => :topic}}, :comments])
     end
     
