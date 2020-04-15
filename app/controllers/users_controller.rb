@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def login
         user = User.find_by(first_name: params[:first_name])
-        if user
+        if user && user.password === params[:password]
             render json: user
         else 
             render json: {message: "error"}
@@ -23,8 +23,12 @@ class UsersController < ApplicationController
     end
     
     def create
-        user = User.create!(user_params)
-        # session[:user_id] = user.id  
+        user = User.new(user_params)
+        user.save
+        params["topicArray"].each do  |topic| 
+        UserTopic.create(user_id: user.id, topic_id: topic["id"])
+        end
+
         if user.valid?
         render json: user
         else  
@@ -49,6 +53,20 @@ class UsersController < ApplicationController
         end
     end
 
+    def joinMeetup 
+        UserMeetup.create(user_id: params[:user_id], meetup_id: params[:meetup_id])
+    end
+
+    def leaveMeetup 
+        # user = User.find(params[:id])
+        # meetups = Meetup.find(params[:user][:meetup_ids])
+
+        # UserMeetup.create(user_id: params[:user_id], meetup_id: params[:meetup_id])
+
+        um = UserMeetup.find_by(user_id: params[:user_id], meetup_id: params[:meetup_id])
+        um.delete
+    end
+
     def destroy
         user = User.find(params[:id])
         user.destroy 
@@ -58,6 +76,6 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:topic_ids, :meetup_ids, :comment_ids, :first_name, :email, :password)
+        params.require(:user).permit(:topic_ids, :meetup_ids, :comment_ids, :first_name, :email, :password, :topicArray)
     end
 end
