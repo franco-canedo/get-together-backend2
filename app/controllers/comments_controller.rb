@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
             user_id: params[:user_id],
             meetup_id: params[:meetup_id]
         )
+        # byebug
         render json: comment
     end
 

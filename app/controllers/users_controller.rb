@@ -10,11 +10,23 @@ class UsersController < ApplicationController
     def login
         user = User.find_by(first_name: params[:first_name])
         if user && user.password === params[:password]
+            session[:id] = user.id
+
             render json: user
         else 
             render json: {message: "error"}
         end 
     end
+
+    def loggedInUser 
+        user = User.find(session[:id])
+        byebug
+        render json: user
+    end
+
+    # def logout 
+    #     session[:id] = nil
+    # end
 
     def show
         user = User.find(params[:id])
@@ -54,7 +66,8 @@ class UsersController < ApplicationController
     end
 
     def joinMeetup 
-        UserMeetup.create(user_id: params[:user_id], meetup_id: params[:meetup_id])
+        UserMeetup.find_or_create_by(user_id: params[:user_id], meetup_id: params[:meetup_id])
+        
     end
 
     def leaveMeetup 

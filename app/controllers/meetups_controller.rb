@@ -6,11 +6,12 @@ class MeetupsController < ApplicationController
 
     def show 
         meetup = Meetup.find(params[:id])
-        render json: meetup.to_json(:include => [:users, :comments, :topics])
+        render json: meetup.to_json(:include => [:users, :comments, :topic])
     end
 
     def create 
         meetup = Meetup.create!(meetup_params)
+        UserMeetup.create(user_id: params[:user_id], meetup_id:meetup.id)
         render json: meetup
     end
 
