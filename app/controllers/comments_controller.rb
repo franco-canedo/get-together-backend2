@@ -2,12 +2,14 @@ class CommentsController < ApplicationController
 
     def index
         comments = Comment.all
-        render json: comments
+        render json: comments.to_json(
+        :include => [:user, :meetup])
     end
 
     def show 
         comment = Comment.find(params[:id])
-        render json: comment
+        render json: comment.to_json(
+            :include => [:user, :meetup])
     end
 
     def create 
@@ -16,6 +18,7 @@ class CommentsController < ApplicationController
             user_id: params[:user_id],
             meetup_id: params[:meetup_id]
         )
+        # byebug
         render json: comment
     end
 
