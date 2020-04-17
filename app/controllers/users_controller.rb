@@ -80,6 +80,12 @@ class UsersController < ApplicationController
         um.delete
     end
 
+    def deleteTopic
+      
+        topic = UserTopic.find_by(user_id: params[:user_id], topic_id: params[:topic_id])
+        topic.delete
+    end
+
     def destroy
         user = User.find(params[:id])
         user.destroy 
